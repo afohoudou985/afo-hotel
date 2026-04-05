@@ -50,7 +50,7 @@ class AddRooms(Frame):
             52.0,
             128.0,
             anchor="nw",
-            text="Room Number",
+            text="Numéro de chambre",
             fill="#5E95FF",
             font=("Montserrat Bold", 14 * -1),
         )
@@ -84,7 +84,7 @@ class AddRooms(Frame):
             52.0,
             234.0,
             anchor="nw",
-            text="Full Price",
+            text="Prix total",
             fill="#5E95FF",
             font=("Montserrat Bold", 14 * -1),
         )
@@ -118,7 +118,7 @@ class AddRooms(Frame):
             293.0,
             128.0,
             anchor="nw",
-            text="Type: (D)elux/(N)ormal",
+            text="Type : (D)eluxe / (N)ormal",
             fill="#5E95FF",
             font=("Montserrat Bold", 14 * -1),
         )
@@ -160,7 +160,7 @@ class AddRooms(Frame):
             181.0,
             58.0,
             anchor="nw",
-            text="Add a Room",
+            text="Ajouter une chambre",
             fill="#5E95FF",
             font=("Montserrat Bold", 26 * -1),
         )
@@ -169,7 +169,7 @@ class AddRooms(Frame):
             549.0,
             59.0,
             anchor="nw",
-            text="Operations",
+            text="Opérations",
             fill="#5E95FF",
             font=("Montserrat Bold", 26 * -1),
         )
@@ -200,27 +200,27 @@ class AddRooms(Frame):
         )
         button_3.place(x=547.0, y=210.0, width=209.0, height=74.0)
 
-    # Save the data to the database
+        # Sauvegarder les données dans la base de données
     def save(self):
-        # check if any fields are empty
+        # vérifier si des champs sont vides
         for val in self.data.values():
             if val.get() == "":
-                messagebox.showinfo("Error", "Please fill in all the fields")
+                messagebox.showinfo("Erreur", "Veuillez remplir tous les champs")
                 return
 
-        # Save the room
-        result = db_controller.add_room(
-            *[self.data[label].get() for label in ("r_no", "price", "type")]
-        )
-
-        if result:
-            messagebox.showinfo("Success", "room added successfully")
-            self.parent.navigate("view")
-            self.parent.windows.get("view").handle_refresh()
-            # clear all fields
-            for label in self.data.keys():
-                self.data[label].set(0)
-        else:
-            messagebox.showerror(
-                "Error", "Unable to add room. Please make sure the data is validated"
+            # Enregistrer la chambre
+            result = db_controller.add_room(
+                *[self.data[label].get() for label in ("r_no", "price", "type")]
             )
+
+            if result:
+                messagebox.showinfo("Succès", "Chambre ajoutée avec succès")
+                self.parent.navigate("view")
+                self.parent.windows.get("view").handle_refresh()
+                # vider tous les champs
+                for label in self.data.keys():
+                    self.data[label].set(0)
+            else:
+                messagebox.showerror(
+                    "Erreur", "Impossible d'ajouter la chambre. Veuillez vérifier les données"
+                )

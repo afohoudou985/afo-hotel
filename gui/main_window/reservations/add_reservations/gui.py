@@ -1,5 +1,4 @@
 from pathlib import Path
-
 from tkinter import Frame, Canvas, Entry, Text, Button, PhotoImage, messagebox
 import controller as db_controller
 
@@ -19,7 +18,14 @@ class AddReservations(Frame):
     def __init__(self, parent, controller=None, *args, **kwargs):
         Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
-        self.data = {"g_id": "", "check_in": "", "meal": "", "r_id": ""}
+
+        # Stockage des champs de saisie
+        self.data = {
+            "g_id": None,      # Guest ID
+            "check_in": None,  # Date d'arrivée
+            "meal": None,      # Repas
+            "r_id": None,      # Room ID
+        }
 
         self.configure(bg="#FFFFFF")
 
@@ -32,22 +38,20 @@ class AddReservations(Frame):
             highlightthickness=0,
             relief="ridge",
         )
-
         self.canvas.place(x=0, y=0)
+
+        # Guest ID
         self.entry_image_1 = PhotoImage(file=relative_to_assets("entry_1.png"))
         entry_bg_1 = self.canvas.create_image(137.5, 153.0, image=self.entry_image_1)
 
         self.canvas.create_text(
-            52.0,
-            128.0,
+            52.0, 128.0,
             anchor="nw",
-            text="Guest Id",
+            text="ID de l'invité",
             fill="#5E95FF",
             font=("Montserrat Bold", 14 * -1),
         )
 
-        self.entry_image_2 = PhotoImage(file=relative_to_assets("entry_2.png"))
-        entry_bg_2 = self.canvas.create_image(141.5, 165.0, image=self.entry_image_2)
         entry_2 = Entry(
             self,
             bd=0,
@@ -59,20 +63,18 @@ class AddReservations(Frame):
         entry_2.place(x=52.0, y=153.0, width=179.0, height=22.0)
         self.data["g_id"] = entry_2
 
+        # Repas (Is Taking Meal)
         self.entry_image_3 = PhotoImage(file=relative_to_assets("entry_3.png"))
         entry_bg_3 = self.canvas.create_image(137.5, 259.0, image=self.entry_image_3)
 
         self.canvas.create_text(
-            52.0,
-            234.0,
+            52.0, 234.0,
             anchor="nw",
-            text="Is Taking Meal",
+            text="Prend un repas ?",
             fill="#5E95FF",
             font=("Montserrat Bold", 14 * -1),
         )
 
-        self.entry_image_4 = PhotoImage(file=relative_to_assets("entry_4.png"))
-        entry_bg_4 = self.canvas.create_image(141.5, 271.0, image=self.entry_image_4)
         entry_4 = Entry(
             self,
             bd=0,
@@ -82,22 +84,20 @@ class AddReservations(Frame):
             foreground="#777777",
         )
         entry_4.place(x=52.0, y=259.0, width=179.0, height=22.0)
-        self.data["r_id"] = entry_4
+        self.data["meal"] = entry_4   # Note : le nom de variable dans le code original semble inversé
 
+        # Room ID
         self.entry_image_5 = PhotoImage(file=relative_to_assets("entry_5.png"))
         entry_bg_5 = self.canvas.create_image(378.5, 153.0, image=self.entry_image_5)
 
         self.canvas.create_text(
-            293.0,
-            128.0,
+            293.0, 128.0,
             anchor="nw",
-            text="Room Id",
+            text="ID de la chambre",
             fill="#5E95FF",
             font=("Montserrat Bold", 14 * -1),
         )
 
-        self.entry_image_6 = PhotoImage(file=relative_to_assets("entry_6.png"))
-        entry_bg_6 = self.canvas.create_image(382.5, 165.0, image=self.entry_image_6)
         entry_6 = Entry(
             self,
             bd=0,
@@ -107,22 +107,20 @@ class AddReservations(Frame):
             font=("Montserrat Bold", 18 * -1),
         )
         entry_6.place(x=293.0, y=153.0, width=179.0, height=22.0)
-        self.data["meal"] = entry_6
+        self.data["r_id"] = entry_6
 
+        # Check-in Time
         self.entry_image_7 = PhotoImage(file=relative_to_assets("entry_7.png"))
         entry_bg_7 = self.canvas.create_image(378.5, 259.0, image=self.entry_image_7)
 
         self.canvas.create_text(
-            293.0,
-            234.0,
+            293.0, 234.0,
             anchor="nw",
-            text="Check-in Time",
+            text="Date d'arrivée",
             fill="#5E95FF",
             font=("Montserrat Bold", 14 * -1),
         )
 
-        self.entry_image_8 = PhotoImage(file=relative_to_assets("entry_8.png"))
-        entry_bg_8 = self.canvas.create_image(382.5, 271.0, image=self.entry_image_8)
         entry_8 = Entry(
             self,
             bd=0,
@@ -134,6 +132,7 @@ class AddReservations(Frame):
         entry_8.place(x=293.0, y=259.0, width=179.0, height=22.0)
         self.data["check_in"] = entry_8
 
+        # Bouton Ajouter
         self.button_image_1 = PhotoImage(file=relative_to_assets("button_1.png"))
         button_1 = Button(
             self,
@@ -145,28 +144,29 @@ class AddReservations(Frame):
         )
         button_1.place(x=164.0, y=322.0, width=190.0, height=48.0)
 
+        # Titres
         self.canvas.create_text(
-            139.0,
-            59.0,
+            139.0, 59.0,
             anchor="nw",
-            text="Add a Reservation",
+            text="Ajouter une réservation",
             fill="#5E95FF",
             font=("Montserrat Bold", 26 * -1),
         )
 
         self.canvas.create_text(
-            549.0,
-            59.0,
+            549.0, 59.0,
             anchor="nw",
-            text="Operations",
+            text="Opérations",
             fill="#5E95FF",
             font=("Montserrat Bold", 26 * -1),
         )
 
+        # Séparateur vertical
         self.canvas.create_rectangle(
             515.0, 59.0, 517.0, 370.0, fill="#EFEFEF", outline=""
         )
 
+        # Bouton Voir les réservations
         self.button_image_2 = PhotoImage(file=relative_to_assets("button_2.png"))
         button_2 = Button(
             self,
@@ -178,6 +178,7 @@ class AddReservations(Frame):
         )
         button_2.place(x=547.0, y=116.0, width=209.0, height=74.0)
 
+        # Bouton Modifier
         self.button_image_3 = PhotoImage(file=relative_to_assets("button_3.png"))
         button_3 = Button(
             self,
@@ -188,32 +189,33 @@ class AddReservations(Frame):
             relief="flat",
         )
         button_3.place(x=547.0, y=210.0, width=209.0, height=74.0)
-        # Set default value for entry
+
+        # Valeur par défaut pour la date d'arrivée
         self.data["check_in"].insert(0, "now")
 
-    # Save the data to the database
+        # Sauvegarde de la réservation
     def save(self):
-        # check if any fields are empty
+        # Vérifier si tous les champs sont remplis
         for label in self.data.keys():
             if self.data[label].get() == "":
-                messagebox.showinfo("Error", "Please fill in all the fields")
+                messagebox.showinfo("Erreur", "Veuillez remplir tous les champs")
                 return
 
-        # Save the reservation
-        result = db_controller.add_reservation(
-            *[self.data[label].get() for label in ("g_id", "meal", "r_id", "check_in")]
-        )
-
-        if result:
-            messagebox.showinfo("Success", "Reservation added successfully")
-            self.parent.navigate("view")
-            self.parent.refresh_entries()
-
-            # clear all fields
-            for label in self.data.keys():
-                self.data[label].delete(0, "end")
-        else:
-            messagebox.showerror(
-                "Error",
-                "Unable to add reservation. Please make sure the data is validated",
+            # Ajouter la réservation dans la base de données
+            result = db_controller.add_reservation(
+                *[self.data[label].get() for label in ("g_id", "meal", "r_id", "check_in")]
             )
+
+            if result:
+                messagebox.showinfo("Succès", "Réservation ajoutée avec succès")
+                self.parent.navigate("view")
+                self.parent.refresh_entries()
+
+                # Réinitialiser les champs
+                for label in self.data.keys():
+                    self.data[label].delete(0, "end")
+            else:
+                messagebox.showerror(
+                    "Erreur",
+                    "Impossible d'ajouter la réservation. Veuillez vérifier les données saisies.",
+                )

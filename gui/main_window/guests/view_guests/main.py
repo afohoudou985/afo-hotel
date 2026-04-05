@@ -1,7 +1,4 @@
-from logging import disable
 from pathlib import Path
-import controller as db_controller
-
 from tkinter import (
     Frame,
     Canvas,
@@ -13,6 +10,7 @@ from tkinter import (
     StringVar,
 )
 from tkinter.ttk import Treeview
+import controller as db_controller
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
@@ -43,48 +41,49 @@ class ViewGuests(Frame):
             highlightthickness=0,
             relief="ridge",
         )
-
         self.canvas.place(x=0, y=0)
+
+        # Barres de séparation
         self.canvas.create_rectangle(
             40.0, 14.0, 742.0, 16.0, fill="#EFEFEF", outline=""
         )
-
         self.canvas.create_rectangle(
             40.0, 342.0, 742.0, 344.0, fill="#EFEFEF", outline=""
         )
 
+        # Titres principaux
         self.canvas.create_text(
-            116.0,
-            33.0,
+            116.0, 33.0,
             anchor="nw",
-            text="View Guests",
+            text="Voir les invités",
             fill="#5E95FF",
             font=("Montserrat Bold", 26 * -1),
         )
 
         self.canvas.create_text(
-            40.0,
-            367.0,
+            116.0, 65.0,
             anchor="nw",
-            text="Avail. Actions:",
-            fill="#5E95FF",
-            font=("Montserrat Bold", 26 * -1),
-        )
-
-        self.canvas.create_text(
-            116.0,
-            65.0,
-            anchor="nw",
-            text="And Perform Operations",
+            text="Et effectuer des opérations",
             fill="#808080",
             font=("Montserrat SemiBold", 16 * -1),
         )
 
+        self.canvas.create_text(
+            40.0, 367.0,
+            anchor="nw",
+            text="Actions disponibles :",
+            fill="#5E95FF",
+            font=("Montserrat Bold", 26 * -1),
+        )
+
+        # Image décorative
         self.image_image_1 = PhotoImage(file=relative_to_assets("image_1.png"))
         image_1 = self.canvas.create_image(666.0, 59.0, image=self.image_image_1)
 
+        # Champ de recherche
         self.entry_image_1 = PhotoImage(file=relative_to_assets("entry_1.png"))
         entry_bg_1 = self.canvas.create_image(680.5, 60.0, image=self.entry_image_1)
+
         entry_1 = Entry(
             self,
             bd=0,
@@ -94,14 +93,14 @@ class ViewGuests(Frame):
             font=("Montserrat Bold", 18 * -1),
             textvariable=self.search_query,
         )
-        # Bind text change to function
+        # Recherche en temps réel
         entry_1.bind(
             "<KeyRelease>",
             lambda event: self.filter_treeview_records(self.search_query.get()),
         )
-
         entry_1.place(x=637.0, y=48.0, width=87.0, height=22.0)
 
+        # Bouton Rafraîchir
         self.button_image_1 = PhotoImage(file=relative_to_assets("button_1.png"))
         self.refresh_btn = Button(
             self,
@@ -113,6 +112,7 @@ class ViewGuests(Frame):
         )
         self.refresh_btn.place(x=525.0, y=33.0, width=53.0, height=53.0)
 
+        # Bouton Retour
         self.image_image_2 = PhotoImage(file=relative_to_assets("image_2.png"))
         image_2 = self.canvas.create_image(617.0, 60.0, image=self.image_image_2)
 
@@ -127,6 +127,7 @@ class ViewGuests(Frame):
         )
         self.navigate_back_btn.place(x=40.0, y=33.0, width=53.0, height=53.0)
 
+        # Bouton Supprimer
         self.button_image_3 = PhotoImage(file=relative_to_assets("button_3.png"))
         self.delete_btn = Button(
             self,
@@ -137,9 +138,9 @@ class ViewGuests(Frame):
             relief="flat",
             state="disabled",
         )
-
         self.delete_btn.place(x=596.0, y=359.0, width=146.0, height=48.0)
 
+        # Bouton Modifier
         self.button_image_4 = PhotoImage(file=relative_to_assets("button_4.png"))
         self.edit_btn = Button(
             self,
@@ -152,22 +153,14 @@ class ViewGuests(Frame):
         )
         self.edit_btn.place(x=463.0, y=359.0, width=116.0, height=48.0)
 
-        # self.canvas.create_rectangle(
-        #     40.0,
-        #     101.0,
-        #     742.0,
-        #     329.0,
-        #     fill="#EFEFEF",
-        #     outline="")
-        # Add treeview here
-
+        # Configuration du Treeview
         self.columns = {
-            "Guest ID": ["Guest ID", 30],
-            "Name": ["Name", 80],
-            "Address": ["Address", 100],
-            "Email": ["Email", 250],
-            "Phone Number": ["Phone Number", 250],
-            "Created At": ["Created At", 200],
+            "Guest ID": ["ID Invité", 80],
+            "Name": ["Nom", 120],
+            "Address": ["Adresse", 150],
+            "Email": ["Email", 180],
+            "Phone Number": ["Téléphone", 130],
+            "Created At": ["Date de création", 150],
         }
 
         self.treeview = Treeview(
@@ -176,66 +169,70 @@ class ViewGuests(Frame):
             show="headings",
             height=200,
             selectmode="browse",
-            # ="#FFFFFF",
-            # fg="#5E95FF",
-            # font=("Montserrat Bold", 18 * -1)
         )
 
-        # Show the headings
+        # Configuration des en-têtes et largeurs des colonnes
         for idx, txt in self.columns.items():
             self.treeview.heading(idx, text=txt[0])
-            # Set the column widths
             self.treeview.column(idx, width=txt[1])
 
-        self.treeview.place(x=40.0, y=101.0, width=700.0, height=229.0)
+            self.treeview.place(x=40.0, y=101.0, width=700.0, height=229.0)
 
-        # Insert data
-        self.handle_refresh()
+            # Chargement initial des données
+            self.handle_refresh()
 
-        # Add selection event
-        self.treeview.bind("<<TreeviewSelect>>", self.on_treeview_select)
+            # Événement de sélection
+            self.treeview.bind("<<TreeviewSelect>>", self.on_treeview_select)
 
     def filter_treeview_records(self, query):
+        """Filtre les enregistrements en fonction de la recherche"""
         self.treeview.delete(*self.treeview.get_children())
-        # run for loop from original data
+
         for row in self.guest_data:
-            # Check if query exists in any value from data
+            # Recherche dans toutes les colonnes
             if query.lower() in str(row).lower():
-                # Insert the data into the treeview
                 self.treeview.insert("", "end", values=row)
-        self.on_treeview_select()
+
+                self.on_treeview_select()
 
     def on_treeview_select(self, event=None):
+        """Gère la sélection d'une ligne dans le tableau"""
         try:
             self.treeview.selection()[0]
         except:
             self.parent.selected_rid = None
             return
-        # Get the selected item
+
+        # Récupérer l'élément sélectionné
         item = self.treeview.selection()[0]
-        # Get the guest id
         self.parent.selected_rid = self.treeview.item(item, "values")[0]
-        # Enable the buttons
+
+        # Activer les boutons Modifier et Supprimer
         self.delete_btn.config(state="normal")
         self.edit_btn.config(state="normal")
 
     def handle_refresh(self):
+        """Rafraîchit la liste des invités"""
         self.treeview.delete(*self.treeview.get_children())
         self.guest_data = db_controller.get_guests()
+
         for row in self.guest_data:
             self.treeview.insert("", "end", values=row)
 
     def handle_navigate_back(self):
+        """Retour vers l'écran d'ajout"""
         self.parent.navigate("add")
 
     def handle_delete(self):
+        """Supprime l'invité sélectionné"""
         if db_controller.delete_guest(self.parent.selected_rid):
-            messagebox.showinfo("Successfully Deleted the guest")
+            messagebox.showinfo("Succès", "Invité supprimé avec succès")
         else:
-            messagebox.showerror("Unable to delete guest")
+            messagebox.showerror("Erreur", "Impossible de supprimer l'invité")
 
-        self.handle_refresh()
+            self.handle_refresh()
 
     def handle_edit(self):
+        """Passe en mode modification"""
         self.parent.navigate("edit")
         self.parent.windows["edit"].initialize()
