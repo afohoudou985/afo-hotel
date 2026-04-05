@@ -1,35 +1,5 @@
 <div id="top"></div>
 
-<!-- PROJECT SHIELDS -->
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Last Commit][last-commit-shield]][last-commit-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-
-<!-- PROJECT Intro -->
-<br />
-<div align="center">
-  <a href="https://github.com/Just-Moh-it/AfoHotel/stargazers">
-    <img src="assets/Readme-assets/banner.png" alt="Project Banner" width="100%">
-  </a>
-
-  <p align="center">
-    AfoHotel - The Hotel Management System
-    <br />
-    <a href="https://github.com/Just-Moh-it/AfoHotel"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://www.figma.com/file/MVq5Q3fhVJB2r70r7I3nJ3/AfoHotel?node-id=102%3A2">Design file on Figma</a>
-    ·
-    <a href="https://github.com/Just-Moh-it/AfoHotel/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/Just-Moh-it/AfoHotel/issues">Request Feature</a>
-  </p>
-</div>
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -58,7 +28,6 @@
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
@@ -66,10 +35,6 @@
 <!-- ABOUT THE PROJECT -->
 
 # About The Project
-
-<a href="https://projects.mohityadav.codes/#AfoHotel">
-    <img src="assets/Readme-assets/logo-full.png" alt="Project Banner" width="300">
-</a>
 
 AfoHotel is an open source, design-focued and the coolest Python-based Hotel Management System on GitHub. Built with Python 3, Tkinter and MySQL, and initially created as a high school CS project, it comprises of all the necessary Hotel Management **features** like:
 
@@ -135,7 +100,7 @@ Want to create your own iteration? [View the designs on Figma](https://www.figma
 
 ## Motivation
 
-This project was created as a 12th grade Computer Science Project. Extra efforts were put in to make it stand out among others' projects, and since it was never meant to be used in real life, practicality was not the top most concern.
+This project was created as a 5th grade BTS Project. Extra efforts were put in to make it stand out among others' projects, and since it was never meant to be used in real life, practicality was not the top most concern.
 
 <details>
     <summary>More info...</summary>
@@ -269,14 +234,6 @@ INSERT INTO login (username, password) values ("your-username", "your-password")
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- ROADMAP -->
-
-# Roadmap
-
--   [x] ~~Add singup and forget password capabilites~~ ([issue #3](<(https://github.com/Just-Moh-it/AfoHotel/issues/3)>))
--   [ ] Adding bcrypt hashing to passwords ([Issue #2](https://github.com/Just-Moh-it/AfoHotel/issues/2))
-
-See the [open issues](https://github.com/Just-Moh-it/AfoHotel/issues) for a full list of proposed features (and known issues).
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
@@ -304,31 +261,7 @@ Distributed under the MIT License. See [`LICENSE.txt`](/LICENSE.txt) for more in
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- CONTACT -->
-
-# Contact
-
-Mohit Yadav will be handling and maintaining the project and add releevant updates if necessary. Here are the contact details:
-
-Mohit Yadav - [@just_moh_it](https://twitter.com/just_moh_it) - mohit@mohit.yayy.me
-
-Project Link: [https://github.com/Just-Moh-it/AfoHotel](https://github.com/Just-Moh-it/AfoHotel)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 <!-- ACKNOWLEDGMENTS -->
-
-# Acknowledgments
-
--   **Parth Jadhav and team** for their Amazing [Tkinter Designer](https://github.com/ParthJadhav/Tkinter-Designer). This project would not have been what it is and looks without it. Highly recommend checking it out.
--   [Nikuu 3d Illustration Pack by Paperpillar
-    ](https://www.figma.com/community/file/1000311109311441524) - Illustrations used on the dashboard and the login page
--   [Montserrat Font](https://fonts.google.com/specimen/Montserrat) Creators
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [contributors-shield]: https://img.shields.io/github/contributors/Just-Moh-it/AfoHotel.svg?style=for-the-badge
 [last-commit-shield]: https://img.shields.io/github/last-commit/Just-Moh-it/AfoHotel?style=for-the-badge
