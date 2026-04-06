@@ -62,7 +62,7 @@ class UpdateRooms(Frame):
             116.0,
             33.0,
             anchor="nw",
-            text="Update Room",
+            text="Modifier une chambre",
             fill="#5E95FF",
             font=("Montserrat Bold", 26 * -1),
         )
@@ -71,7 +71,7 @@ class UpdateRooms(Frame):
             116.0,
             65.0,
             anchor="nw",
-            text="Change Details",
+            text="Modifier les informations",
             fill="#808080",
             font=("Montserrat SemiBold", 16 * -1),
         )
@@ -94,7 +94,7 @@ class UpdateRooms(Frame):
             71.56398010253906,
             145.0,
             anchor="nw",
-            text="Room ID",
+            text="ID de la chambre",
             fill="#5E95FF",
             font=("Montserrat Bold", 14 * -1),
         )
@@ -115,7 +115,7 @@ class UpdateRooms(Frame):
             71.56398010253906,
             251.0,
             anchor="nw",
-            text="Room Type",
+            text="Type de chambre",
             fill="#5E95FF",
             font=("Montserrat Bold", 14 * -1),
         )
@@ -144,7 +144,7 @@ class UpdateRooms(Frame):
             455.0473937988281,
             145.0,
             anchor="nw",
-            text="Room Number",
+            text="Numéro de chambre",
             fill="#5E95FF",
             font=("Montserrat Bold", 14 * -1),
         )
@@ -169,7 +169,7 @@ class UpdateRooms(Frame):
             455.0473937988281,
             253.0,
             anchor="nw",
-            text="Price",
+            text="Prix",
             fill="#5E95FF",
             font=("Montserrat Bold", 14 * -1),
         )
@@ -206,7 +206,7 @@ class UpdateRooms(Frame):
         self.selected_r_id = self.parent.selected_rid
         self.rooms_data = self.parent.room_data
 
-        # Filter out all reservations for selected id reservation
+        # Filtrer les chambres correspondant à l'ID sélectionné
         self.selected_rooms_data = list(
             filter(lambda x: str(x[0]) == self.selected_r_id, self.rooms_data)
         )
@@ -228,12 +228,12 @@ class UpdateRooms(Frame):
         )
 
         if result:
-            messagebox.showinfo("Successful", "Details updated successfully")
+            messagebox.showinfo("Succès", "Informations mises à jour avec succès")
             self.parent.navigate("view")
             self.parent.windows.get("view").handle_refresh()
-            # clear all fields
+            # vider tous les champs
             for label in self.data.keys():
                 self.data[label].set("")
-            self.parent.windows['view'].handle_refresh()
+                self.parent.windows['view'].handle_refresh()
         else:
-            messagebox.showerror("Error", "Failed to update details")
+            messagebox.showerror("Erreur", "Échec de la mise à jour des informations")

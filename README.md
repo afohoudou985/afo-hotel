@@ -1,35 +1,5 @@
 <div id="top"></div>
 
-<!-- PROJECT SHIELDS -->
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Last Commit][last-commit-shield]][last-commit-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-
-<!-- PROJECT Intro -->
-<br />
-<div align="center">
-  <a href="https://github.com/Just-Moh-it/HotinGo/stargazers">
-    <img src="assets/Readme-assets/banner.png" alt="Project Banner" width="100%">
-  </a>
-
-  <p align="center">
-    HotinGo - The Hotel Management System
-    <br />
-    <a href="https://github.com/Just-Moh-it/HotinGo"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://www.figma.com/file/MVq5Q3fhVJB2r70r7I3nJ3/HotinGo?node-id=102%3A2">Design file on Figma</a>
-    ·
-    <a href="https://github.com/Just-Moh-it/HotinGo/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/Just-Moh-it/HotinGo/issues">Request Feature</a>
-  </p>
-</div>
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -58,7 +28,6 @@
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
@@ -67,11 +36,7 @@
 
 # About The Project
 
-<a href="https://projects.mohityadav.codes/#HotinGo">
-    <img src="assets/Readme-assets/logo-full.png" alt="Project Banner" width="300">
-</a>
-
-HotinGo is an open source, design-focued and the coolest Python-based Hotel Management System on GitHub. Built with Python 3, Tkinter and MySQL, and initially created as a high school CS project, it comprises of all the necessary Hotel Management **features** like:
+AfoHotel is an open source, design-focued and the coolest Python-based Hotel Management System on GitHub. Built with Python 3, Tkinter and MySQL, and initially created as a high school CS project, it comprises of all the necessary Hotel Management **features** like:
 
 -   Login 🔑 and Authentication through 🐬 MySQL database 😍
 -   The ability to add, update, view and delete new records for:
@@ -127,7 +92,7 @@ Here is a sneak peak of the application and it's visuals 😍:
     </tr>
 </table>
 
-Want to create your own iteration? [View the designs on Figma](https://www.figma.com/file/MVq5Q3fhVJB2r70r7I3nJ3/HotinGo?node-id=102%3A2), and then export to Python code with [Tkinter Designer](https://github.com/ParthJadhav/Tkinter-Designer) ☄️.
+Want to create your own iteration? [View the designs on Figma](https://www.figma.com/file/MVq5Q3fhVJB2r70r7I3nJ3/AfoHotel?node-id=102%3A2), and then export to Python code with [Tkinter Designer](https://github.com/ParthJadhav/Tkinter-Designer) ☄️.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -135,7 +100,7 @@ Want to create your own iteration? [View the designs on Figma](https://www.figma
 
 ## Motivation
 
-This project was created as a 12th grade Computer Science Project. Extra efforts were put in to make it stand out among others' projects, and since it was never meant to be used in real life, practicality was not the top most concern.
+This project was created as a 5th grade BTS Project. Extra efforts were put in to make it stand out among others' projects, and since it was never meant to be used in real life, practicality was not the top most concern.
 
 <details>
     <summary>More info...</summary>
@@ -189,7 +154,7 @@ Find instructions for [cloning/downloading this repo here](https://docs.github.c
 Or if you have git command line installed, clone using this command:
 
 ```sh
-git clone https://github.com/Just-Moh-it/HotinGo.git
+git clone https://github.com/Just-Moh-it/AfoHotel.git
 ```
 
 ### 2: Cd to the folder
@@ -199,7 +164,7 @@ Open terminal/cmd/powershell and change directory/folder to the cloned folder. [
 The command for the same would be
 
 ```sh
-cd Location\ To/Hotingo
+cd Location\ To/AfoHotel
 ```
 
 ### 3: Install the PIP packages/dependencies
@@ -207,7 +172,7 @@ cd Location\ To/Hotingo
 After you cd into the repo folder, ensure you see the following cmd/terminal prompt
 
 ```sh
-Something.../HotinGo $
+Something.../AfoHotel $
 ```
 
 If not, repeat the previous step.
@@ -248,7 +213,7 @@ Run `main.py` file with python 3 and you should see the login window, if you hav
 
 The default username and password are `username` and `password` respectively.
 
-If your app does not run properly, or gives an error, research about it until you find the solution, or else [create an issue here](https://github.com/Just-Moh-it/HotinGo/issues/new). Someone will troubleshoot the issue.
+If your app does not run properly, or gives an error, research about it until you find the solution, or else [create an issue here](https://github.com/Just-Moh-it/AfoHotel/issues/new). Someone will troubleshoot the issue.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -269,14 +234,6 @@ INSERT INTO login (username, password) values ("your-username", "your-password")
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- ROADMAP -->
-
-# Roadmap
-
--   [x] ~~Add singup and forget password capabilites~~ ([issue #3](<(https://github.com/Just-Moh-it/HotinGo/issues/3)>))
--   [ ] Adding bcrypt hashing to passwords ([Issue #2](https://github.com/Just-Moh-it/HotinGo/issues/2))
-
-See the [open issues](https://github.com/Just-Moh-it/HotinGo/issues) for a full list of proposed features (and known issues).
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
@@ -304,44 +261,20 @@ Distributed under the MIT License. See [`LICENSE.txt`](/LICENSE.txt) for more in
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- CONTACT -->
-
-# Contact
-
-Mohit Yadav will be handling and maintaining the project and add releevant updates if necessary. Here are the contact details:
-
-Mohit Yadav - [@just_moh_it](https://twitter.com/just_moh_it) - mohit@mohit.yayy.me
-
-Project Link: [https://github.com/Just-Moh-it/HotinGo](https://github.com/Just-Moh-it/HotinGo)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 <!-- ACKNOWLEDGMENTS -->
 
-# Acknowledgments
-
--   **Parth Jadhav and team** for their Amazing [Tkinter Designer](https://github.com/ParthJadhav/Tkinter-Designer). This project would not have been what it is and looks without it. Highly recommend checking it out.
--   [Nikuu 3d Illustration Pack by Paperpillar
-    ](https://www.figma.com/community/file/1000311109311441524) - Illustrations used on the dashboard and the login page
--   [Montserrat Font](https://fonts.google.com/specimen/Montserrat) Creators
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
-[contributors-shield]: https://img.shields.io/github/contributors/Just-Moh-it/HotinGo.svg?style=for-the-badge
-[last-commit-shield]: https://img.shields.io/github/last-commit/Just-Moh-it/HotinGo?style=for-the-badge
-[last-commit-url]: https://github.com/Just-Moh-it/HotinGo/commit/main
-[contributors-url]: https://github.com/Just-Moh-it/HotinGo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Just-Moh-it/HotinGo.svg?style=for-the-badge
-[forks-url]: https://github.com/Just-Moh-it/HotinGo/network/members
-[stars-shield]: https://img.shields.io/github/stars/Just-Moh-it/HotinGo.svg?style=for-the-badge
-[stars-url]: https://github.com/Just-Moh-it/HotinGo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Just-Moh-it/HotinGo.svg?style=for-the-badge
-[issues-url]: https://github.com/Just-Moh-it/HotinGo/issues
-[license-shield]: https://img.shields.io/github/license/Just-Moh-it/HotinGo.svg?style=for-the-badge
-[license-url]: https://github.com/Just-Moh-it/HotinGo/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/Just-Moh-it/AfoHotel.svg?style=for-the-badge
+[last-commit-shield]: https://img.shields.io/github/last-commit/Just-Moh-it/AfoHotel?style=for-the-badge
+[last-commit-url]: https://github.com/Just-Moh-it/AfoHotel/commit/main
+[contributors-url]: https://github.com/Just-Moh-it/AfoHotel/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Just-Moh-it/AfoHotel.svg?style=for-the-badge
+[forks-url]: https://github.com/Just-Moh-it/AfoHotel/network/members
+[stars-shield]: https://img.shields.io/github/stars/Just-Moh-it/AfoHotel.svg?style=for-the-badge
+[stars-url]: https://github.com/Just-Moh-it/AfoHotel/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Just-Moh-it/AfoHotel.svg?style=for-the-badge
+[issues-url]: https://github.com/Just-Moh-it/AfoHotel/issues
+[license-shield]: https://img.shields.io/github/license/Just-Moh-it/AfoHotel.svg?style=for-the-badge
+[license-url]: https://github.com/Just-Moh-it/AfoHotel/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [logo]: assets/Readme-assets/logo-full.png

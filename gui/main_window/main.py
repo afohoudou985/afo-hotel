@@ -34,7 +34,7 @@ class MainWindow(Toplevel):
     def __init__(self, *args, **kwargs):
         Toplevel.__init__(self, *args, **kwargs)
 
-        self.title("HotinGo - The state of art HMS")
+        self.title("AfoHotel - Le système de gestion hôtelière moderne")
 
         self.geometry("1012x506")
         self.configure(bg="#5E95FF")
@@ -58,9 +58,8 @@ class MainWindow(Toplevel):
             215, 0.0, 1012.0, 506.0, fill="#FFFFFF", outline=""
         )
 
-        # Add a frame rectangle
+        # Indicateur de la barre latérale
         self.sidebar_indicator = Frame(self, background="#FFFFFF")
-
         self.sidebar_indicator.place(x=0, y=133, height=47, width=7)
 
         button_image_1 = PhotoImage(file=relative_to_assets("button_1.png"))
@@ -138,7 +137,7 @@ class MainWindow(Toplevel):
             255.0,
             33.0,
             anchor="nw",
-            text="Hello",
+            text="Bonjour",
             fill="#5E95FF",
             font=("Montserrat Bold", 26 * -1),
         )
@@ -147,7 +146,7 @@ class MainWindow(Toplevel):
             28.0,
             21.0,
             anchor="nw",
-            text="HotinGo",
+            text="AfoHotel",
             fill="#FFFFFF",
             font=("Montserrat Bold", 36 * -1),
         )
@@ -156,7 +155,7 @@ class MainWindow(Toplevel):
             844.0,
             43.0,
             anchor="nw",
-            text="Administrator",
+            text="Administrateur",
             fill="#808080",
             font=("Montserrat Bold", 16 * -1),
         )
@@ -165,7 +164,7 @@ class MainWindow(Toplevel):
             341.0,
             213.0,
             anchor="nw",
-            text="(The screens below",
+            text="(Les écrans ci-dessous",
             fill="#5E95FF",
             font=("Montserrat Bold", 48 * -1),
         )
@@ -174,12 +173,12 @@ class MainWindow(Toplevel):
             420.0,
             272.0,
             anchor="nw",
-            text="will come here)",
+            text="apparaîtront ici)",
             fill="#5E95FF",
             font=("Montserrat Bold", 48 * -1),
         )
 
-        # Loop through windows and place them
+        # Initialisation des fenêtres
         self.windows = {
             "dash": Dashboard(self),
             "roo": Rooms(self),
@@ -202,7 +201,7 @@ class MainWindow(Toplevel):
 
     def logout(self):
         confirm = messagebox.askyesno(
-            "Confirm log-out", "Do you really want to log out?"
+            "Confirmer la déconnexion", "Voulez-vous vraiment vous déconnecter ?"
         )
         if confirm == True:
             user = None
@@ -210,23 +209,23 @@ class MainWindow(Toplevel):
             login.gui.loginWindow()
 
     def handle_btn_press(self, caller, name):
-        # Place the sidebar on respective button
+        # Déplacer l'indicateur sur le bouton sélectionné
         self.sidebar_indicator.place(x=0, y=caller.winfo_y())
 
-        # Hide all screens
+        # Cacher tous les écrans
         for window in self.windows.values():
             window.place_forget()
 
-        # Set ucrrent Window
-        self.current_window = self.windows.get(name)
+            # Définir la fenêtre courante
+            self.current_window = self.windows.get(name)
 
-        # Show the screen of the button pressed
-        self.windows[name].place(x=215, y=72, width=1013.0, height=506.0)
+            # Afficher l'écran sélectionné
+            self.windows[name].place(x=215, y=72, width=1013.0, height=506.0)
 
-        # Handle label change
-        current_name = self.windows.get(name)._name.split("!")[-1].capitalize()
-        self.canvas.itemconfigure(self.heading, text=current_name)
+            # Mettre à jour le titre
+            current_name = self.windows.get(name)._name.split("!")[-1].capitalize()
+            self.canvas.itemconfigure(self.heading, text=current_name)
 
     def handle_dashboard_refresh(self):
-        # Recreate the dash window
+        # Recréer le tableau de bord
         self.windows["dash"] = Dashboard(self)
